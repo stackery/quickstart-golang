@@ -36,7 +36,7 @@ Resources:
         - Stack ${StackTagName} Environment ${EnvironmentTagName} Function ${ResourceName}
         - ResourceName: postItem
       CodeUri: src/postItem
-      Handler: main.Handler
+      Handler: main
       Runtime: go1.x
       MemorySize: 3008
       Timeout: 30
@@ -64,7 +64,7 @@ Resources:
         - Stack ${StackTagName} Environment ${EnvironmentTagName} Function ${ResourceName}
         - ResourceName: getItems
       CodeUri: src/getItems
-      Handler: main.Handler
+      Handler: main
       Runtime: go1.x
       MemorySize: 3008
       Timeout: 30

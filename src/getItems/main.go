@@ -1,14 +1,15 @@
 package main
 
 import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
-	"github.com/aws/aws-sdk-go/service/dynamodb/expression"
-
-	"fmt"
-	"os"
 )
 
 // Create struct to hold info about new item
@@ -35,10 +36,11 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 	// Use dynamodb to get items from the ItemTable
 	result, err := svc.Scan(params)
 	if err != nil {
-		fmt.Println("Error getting items from table " + tableName)
-		fmt.Println((err.Error()))
+		fmt.Printf("Error getting items from table %s: %s\n", tableName, err.Error())
 		os.Exit(1)
 	}
+
+	fmt.Printf("Result: %#v\n", result)
 
 	for _, i := range result.Items {
 		item := Item{}
@@ -51,11 +53,11 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 			os.Exit(1)
 		}
 
-		fmt.Println("Item " + item.Id + ": " + item.Contents)
+		fmt.Println("Item " + item.Id + ": " + item.Content)
 		fmt.Println()
 	}
 
-	return result.Count + " items found"
+	return fmt.Sprintf("%d items found", *result.Count), nil
 }
 
 func main() {

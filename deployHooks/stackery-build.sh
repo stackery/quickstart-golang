@@ -1,8 +1,13 @@
 #!/bin/sh
-
-echo --------------------------------------------------  got here in stackery-build.sh
-
 mkdir -p .aws-sam/build/src/
-( cd src/Function && GOPATH=$PWD && make ) 
 cp .stackery/template.yaml .aws-sam/build/template.yaml
-cp -r src/Function .aws-sam/build/src/Function
+
+export GOPATH=$PWD
+
+( cd src/getItems && make ) 
+mkdir -p .aws-sam/build/src/getItems
+cp src/getItems/main .aws-sam/build/src/getItems/main
+
+( cd src/postItem && make ) 
+mkdir -p .aws-sam/build/src/postItem
+cp src/postItem/main .aws-sam/build/src/postItem/main
