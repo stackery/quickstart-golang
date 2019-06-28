@@ -28,7 +28,7 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 
 	item := Item{
 		Id:      "1",                  // modify with each invoke so the id does not repeat
-		Content: "This is my content", // modify content here
+		Content: "This is my content"	 // modify content here
 	}
 
 	av, err := dynamodbattribute.MarshalMap(item)
