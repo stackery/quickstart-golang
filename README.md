@@ -25,13 +25,11 @@ Here is an overview of the files:
 │   ├── getItems                  <-- Source code dir for getItems function
 │   │   ├── README.md             <-- Function-specific README
 │   │   ├── main.go               <-- Lambda function code
-│   │   ├── Gopkg.toml            <-- Go dependencies
 │   │   ├── Makefile              <-- Go makefile
 │   │   └── .stackery-config.yaml <-- Stackery function configuration file
 │   ├── postItem                  <-- Source code dir for postItem function
 │   │   ├── README.md             <-- Function-specific README
 │   │   ├── main.go               <-- Lambda function code
-│   │   ├── Gopkg.toml            <-- Go dependencies
 │   │   ├── Makefile              <-- Go makefile
 │   │   └──.stackery-config.yaml  <-- Stackery function configuration file
 └── template.yaml                 <-- SAM infrastructure-as-code template
