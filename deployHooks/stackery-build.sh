@@ -1,6 +1,11 @@
 #!/bin/sh
 mkdir -p .aws-sam/build/src/
-cp .stackery/template.yaml .aws-sam/build/template.yaml
+
+if [ -f .stackery/.stackery.template.yaml ]; then
+    cp .stackery/.stackery.template.yaml .aws-sam/build/template.yaml
+else
+    cp .stackery/template.yaml .aws-sam/build/template.yaml
+fi
 
 export GOPATH=$PWD
 
