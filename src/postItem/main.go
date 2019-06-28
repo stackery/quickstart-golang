@@ -27,8 +27,8 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 	svc := dynamodb.New(sess)
 
 	item := Item{
-		Id:      "1",                  // modify with each invoke so the id does not repeat
-		Content: "This is my content", // modify content here
+		Id:      "2",            // modify with each invoke so the id does not repeat
+		Content: "Moar content", // modify content here
 	}
 
 	av, err := dynamodbattribute.MarshalMap(item)
@@ -51,8 +51,8 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 		os.Exit(1)
 	}
 
-	fmt.Println("Adding item '" + item.Id + " to table " + tableName)
-	return "", nil
+	fmt.Println("Adding item " + item.Id + " to table " + tableName)
+	return "Success!", nil
 }
 
 func main() {
