@@ -27,8 +27,8 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 	svc := dynamodb.New(sess)
 
 	item := Item{
-		Id:      "2",            // modify with each invoke so the id does not repeat
-		Content: "Moar content", // modify content here
+		Id:      "3",              // modify with each invoke so the id does not repeat
+		Content: "Oh hai content", // modify content here
 	}
 
 	av, err := dynamodbattribute.MarshalMap(item)
