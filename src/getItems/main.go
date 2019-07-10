@@ -33,7 +33,7 @@ func Handler(ctx context.Context, event interface{}) (string, error) {
 		TableName: aws.String(tableName),
 	}
 
-	// Use dynamodb to get items from the ItemTable
+	// Use dynamodb to get items from the Item table
 	result, err := svc.Scan(params)
 	if err != nil {
 		fmt.Printf("Error getting items from table %s: %s\n", tableName, err.Error())

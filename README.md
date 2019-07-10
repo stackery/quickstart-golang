@@ -27,7 +27,7 @@ Here is an overview of the files:
 │   │   ├── main.go               <-- Lambda function code
 │   │   ├── Makefile              <-- Go makefile
 │   │   └── .stackery-config.yaml <-- Stackery function configuration file
-│   ├── postItem                  <-- Source code dir for postItem function
+│   ├── newItem                   <-- Source code dir for newItem function
 │   │   ├── README.md             <-- Function-specific README
 │   │   ├── main.go               <-- Lambda function code
 │   │   ├── Makefile              <-- Go makefile
