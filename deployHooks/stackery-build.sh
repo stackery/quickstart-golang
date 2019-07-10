@@ -13,6 +13,6 @@ export GOPATH=$PWD
 mkdir -p .aws-sam/build/src/getItems
 cp src/getItems/main .aws-sam/build/src/getItems/main
 
-( cd src/postItem && make ) 
-mkdir -p .aws-sam/build/src/postItem
-cp src/postItem/main .aws-sam/build/src/postItem/main
+( cd src/newItem && make ) 
+mkdir -p .aws-sam/build/src/newItem
+cp src/newItem/main .aws-sam/build/src/newItem/main
