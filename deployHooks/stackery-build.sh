@@ -1,18 +1,16 @@
 #!/bin/sh
+
+set -e
 mkdir -p .aws-sam/build/src/
 
-if [ -f .stackery/.stackery.template.yaml ]; then
-    cp .stackery/.stackery.template.yaml .aws-sam/build/template.yaml
-else
-    cp .stackery/template.yaml .aws-sam/build/template.yaml
-fi
+cp .stackery/template.yaml .aws-sam/build/template.yaml
 
-export GOPATH=$PWD
+( cd src/getItems && GOBIN=$PWD GOPATH=$PWD make )
 
-( cd src/getItems && make ) 
-mkdir -p .aws-sam/build/src/getItems
-cp src/getItems/main .aws-sam/build/src/getItems/main
+rm -rf .aws-sam/build/src/getItems
+cp -r src/getItems .aws-sam/build/src/getItems
 
-( cd src/newItem && make ) 
-mkdir -p .aws-sam/build/src/newItem
-cp src/newItem/main .aws-sam/build/src/newItem/main
+( cd src/newItem && GOBIN=$PWD GOPATH=$PWD make )
+
+rm -rf .aws-sam/build/src/newItem
+cp -r src/newItem .aws-sam/build/src/newItem
